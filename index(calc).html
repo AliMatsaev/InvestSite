@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body {
+			background-image: url("themoney.png");
+		}
+	</style>
+	<title>Инвестиционный калькулятор</title>
+</head>
+<body>
+	<div>
+		<h4>Инвестиционный калькулятор</h4>
+		<input type="text" id="startcapital">
+		<span>Начальный капитал(руб)</span>
+	</div>
+	<div>
+		<input type="text" id="interestrate">
+		<span>Ожидаемая доходность в год(%)</span>
+	</div>
+	<div>
+		<input type="text" id="term">
+		<span>Срок инвестирования (лет)</span>
+	</div>
+	<div>
+		<input type="text" id="accountrefill">
+		<span>Сумма ежемесячного пополнения(руб)</span>
+	</div>
+	<div>
+		<input type="submit" id="calculate" value="Рассчитать капитал" onclick="func()">
+	</div>
+	<div>
+		<input type="text" id="totalcapital">
+		<span>Итоговый капитал(руб)</span>
+	</div>
+	<script type="text/javascript">
+		function func() {
+			var startCapital = document.getElementById('startcapital');
+			var rate = document.getElementById('interestrate');
+			var term = document.getElementById('term');
+			var accountRefill = document.getElementById('accountrefill');
+			var totalCapital = document.getElementById('totalcapital');
+			var s = startCapital.value;
+			var t = totalCapital.value;
+			var r = rate.value * 0.01;
+			var a = accountRefill.value * 12;
+			t = 100000;
+			for (var i = 0; i < term.value; i++) {
+				t += t * r + a;
+			}
+			alert("Ваш капитал от инвестирования будет равен " + Math.round(t) + " рублей");
+		}
+	</script>
+</body>
+</html>
